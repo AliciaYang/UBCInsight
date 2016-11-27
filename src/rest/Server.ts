@@ -60,16 +60,28 @@ export default class Server {
 
                 // Loads the homepage.
                 // curl -is  http://localhost:4321/
-		that.rest.get('/', RouteHandler.getHomepage);
+		        that.rest.get('/:id', RouteHandler.getHomepage);
 
                 // Sends a dataset. Is idempotent and can create or update a dataset id.
                 // curl localhost:4321/dataset/test --upload-file FNAME.zip
                 that.rest.put('/dataset/:id', RouteHandler.putDataset);
 
+
+
                 // Receives queries. Although these queries never change the server (and thus could be GETs)
                 // they are formed by sending JSON bodies, which is not standard for normal GET requests.
                 // curl -is -X POST -d '{ "key": "value" }' http://localhost:4321/query
                 that.rest.post('/query', restify.bodyParser(), RouteHandler.postQuery);
+
+                that.rest.post('/scheduler', restify.bodyParser(), RouteHandler.postScheduler);
+
+                that.rest.post('/history', restify.bodyParser(), RouteHandler.postHistory);
+
+
+		// Delete Datasets
+                that.rest.del('/dataset/:id', RouteHandler.deleteDatasets);
+
+
 
                 that.rest.listen(that.port, function () {
                     Log.info('Server::start() - restify listening: ' + that.rest.url);

@@ -10,14 +10,21 @@ import QueryController from '../controller/QueryController';
 
 import {QueryRequest} from "../controller/QueryController";
 import Log from '../Util';
+import {InvalidArgumentError} from "restify";
+import InsightFacade from "../controller/InsightFacade";
+import {SchedulerRequest} from "../controller/SchedulerController";
+
 
 export default class RouteHandler {
 
     private static datasetController = new DatasetController();
+    private static myInsightFacade = new InsightFacade();
 
     public static getHomepage(req: restify.Request, res: restify.Response, next: restify.Next) {
         Log.trace('RoutHandler::getHomepage(..)');
-        fs.readFile('./src/rest/views/index.html', 'utf8', function (err: Error, file: Buffer) {
+        Log.trace(req.params.id);
+        var page =  req.params.id || "index.html";
+        fs.readFile('./src/rest/views/' + page, 'utf8', function (err: Error, file: Buffer) {
             if (err) {
                 res.send(500);
                 Log.error(JSON.stringify(err));
@@ -47,13 +54,15 @@ export default class RouteHandler {
                 req.body = concated.toString('base64');
                 Log.trace('RouteHandler::postDataset(..) on end; total length: ' + req.body.length);
 
-                let controller = RouteHandler.datasetController;
-                controller.process(id, req.body).then(function (result) {
+                let facade = RouteHandler.myInsightFacade;
+                // let controller = RouteHandler.datasetController;
+                facade.addDataset(id, req.body).then(function (result: any) {
                     Log.trace('RouteHandler::postDataset(..) - processed');
-                    res.json(200, {success: result});
+                    res.json(result.code, {success: result.body});
                 }).catch(function (err: Error) {
                     Log.trace('RouteHandler::postDataset(..) - ERROR: ' + err.message);
                     res.json(400, {err: err.message});
+
                 });
             });
 
@@ -64,23 +73,96 @@ export default class RouteHandler {
         return next();
     }
 
+
+
+    public static postHistory(req: restify.Request, res:restify.Response, next: restify.Next){
+        Log.trace('RouteHandler::postHistory(..) - params: ' + JSON.stringify(req.params));
+        try {
+            let facade = RouteHandler.myInsightFacade;
+            let id: string = req.params;
+            //console.log(id);
+            // let controller = new QueryController(datasets);
+
+            facade.performHistory(id).then(function (result) {
+                res.json(result.code, result.body);
+            }).catch(function (err: Error) {
+                Log.trace('RouteHandler::postHistory(..) - ERROR: ' + err.message);
+                res.json(403, {err: err.message});
+            });
+        } catch(err) {
+            Log.error('RouteHandler::postHistory(..) - ERROR: ' + err);
+            res.send(403);
+        }
+
+        return next();
+
+    }
+
     public static postQuery(req: restify.Request, res: restify.Response, next: restify.Next) {
         Log.trace('RouteHandler::postQuery(..) - params: ' + JSON.stringify(req.params));
         try {
+            let facade = RouteHandler.myInsightFacade;
             let query: QueryRequest = req.params;
-            let datasets: Datasets = RouteHandler.datasetController.getDatasets();
-            let controller = new QueryController(datasets);
-            let isValid = controller.isValid(query);
+            // let controller = new QueryController(datasets);
 
-            if (isValid === true) {
-                let result = controller.query(query);
-                res.json(200, result);
-            } else {
-                res.json(400, {status: 'invalid query'});
+
+            if(Object.keys(query).length==0) {
+                res.json(400, {error: 'invalid query'});
             }
-        } catch (err) {
+            facade.performQuery(query).then(function (result) {
+                res.json(result.code, result.body);
+            }).catch(function (err: Error) {
+                Log.trace('RouteHandler::postDataset(..) - ERROR: ' + err.message);
+                res.json(403, {err: err.message});
+            });
+        } catch(err) {
             Log.error('RouteHandler::postQuery(..) - ERROR: ' + err);
             res.send(403);
+        }
+
+        return next();
+    }
+
+
+    public static postScheduler(req: restify.Request, res: restify.Response, next: restify.Next) {
+        Log.trace('RouteHandler::postSchedule(..) - params: ' + JSON.stringify(req.params));
+        try {
+            let facade = RouteHandler.myInsightFacade;
+            let scheduler: SchedulerRequest = req.params;
+
+
+            facade.performSchedule(scheduler).then(function (result) {
+                res.json(result.code, result.body);
+            }).catch(function (err: Error) {
+                Log.trace('RouteHandler::postDataset(..) - ERROR: ' + err.message);
+                res.json(403, {err: err.message});
+            });
+        } catch(err) {
+            Log.error('RouteHandler::postQuery(..) - ERROR: ' + err);
+            res.send(403);
+        }
+
+        return next();
+    }
+
+    public static deleteDatasets(req: restify.Request, res: restify.Response, next: restify.Next) {
+        Log.trace('RouteHandler::deleteDatases(..) - params: ' + JSON.stringify(req.params));
+        try {
+            var id: string = req.params.id;
+
+            // let controller = RouteHandler.datasetController;
+            let facade = RouteHandler.myInsightFacade;
+
+            facade.removeDataset(id).then(function (result) {
+                res.json(result.code, result.body);
+            }).catch(function (err: Error) {
+                Log.trace('RouteHandler::deleteDatases(..) - ERROR: ' + err.message);
+                res.json(404, {err: err.message});
+            })
+
+        } catch (err) {
+            Log.error('RouteHandler::postQuery(..) - ERROR: ' + err);
+            res.send(404);
         }
         return next();
     }
