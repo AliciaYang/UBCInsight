@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<head>
+	<link rel="stylesheet" href="./public/bootstrap.min.css">
+	<link rel="stylesheet" href="./public/main.css">
+	<script src="./public/jquery.min.js"></script>
+	<script src="./public/bootstrap.min.js"></script>
+	<script src="./public/d3.min.js"></script>
+	<script src="./public/main.js"></script>
+</head>
+<html>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand">InsightUBC</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#addData">Add Data</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#courses">courses</a></li>
+						<li><a href="#rooms">rooms</a></li>
+					</ul>
+				</li>
+				<li><a href="RoomScheduler.html">Room Scheduler</a></li>
+				<li><a href="history.html">Recent Queries</a></li>
+			</ul>
+
+		</div>
+		<!--/.nav-collapse -->
+	</div>
+</nav>
+
+<div class="container">
+	<div class="jumbotron">
+		<h1>Insight UBC</h1>
+		<p>UBC is a big place, and involves a large number of people doing a variety of tasks. The goal of this project is to provide a way to perform some of the tasks required to run the university and to enable effective querying of the metadata from around campus. This will involve working with courses, prerequisites, past course averages, room scheduling, and timetable creation.</p>
+		<p></p>
+		<p>
+			<a class="btn btn-lg btn-primary" href="http://www.ubc.ca/" target="_blank" role="button">Explore UBC &raquo;</a>
+		</p>
+	</div>
+</div>
+
+<div class="container" id="addData">
+	<div class="jumbotron">
+		<div id="dataset">
+			<div class="form-group">
+				<h2>Dataset</h2>
+				<div class="form-group col-lg-6">
+					<select class="form-control" id="datasetId">
+						<option selected="selected">Choose ID for dataset</option>
+						<option value="courses">courses</option>
+						<option value="rooms">rooms</option>
+					</select>
+				</div>
+				<div class="form-group col-xs-6">
+					<input type="file" class="form-control" id="datasetZip">
+				</div>
+			</div>
+			<button type="button" class="btn btn-primary" id="datasetAdd">Add Dataset</button>
+			<button type="button" class="btn btn-primary" id="datasetRm">Remove Dataset</button>
+		</div>
+	</div>
+</div>
+
+<div class="container" id="courses">
+	<div class="jumbotron">
+
+		<form id="queryCourses">
+
+			<div class="container">
+				<h2>Find Courses</h2>
+				<div class="form-group">
+					<fieldset class="searchFields">
+						<ul class="list-unstyled">
+							<li index="0">
+								<div class="form-group">
+									<div class="col-xs-4">
+										<label for="searchField0">Search field 1</label>
+										<select class="form-control" id="searchField0">
+											<option selected="selected">None</option>
+											<option value="courses_size">Section Size</option>
+											<option value="courses_dept">Department</option>
+											<option value="courses_id">Course Number</option>
+											<option value="courses_instructor">Instructor</option>
+											<option value="courses_title">Title</option>
+										</select>
+									</div>
+
+									<div class="col-xs-4">
+										<label for="searchValue0">Search value 1</label>
+										<input class="form-control" type="text" id="searchValue0">
+									</div>
+
+									<div class="col-xs-4 gutter">
+										<label for="searchBoolean0">Search logic 1</label>
+										<select class="form-control" id="searchBoolean0">
+											<option selected="selected" value="None">None</option>
+											<option value="AND">AND</option>
+											<option value="OR">OR</option>
+											<option value="NOT">NOT</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="1">
+								<div class="form-group">
+									<div class="col-xs-4">
+										<label for="searchField1">Search field 2</label>
+										<select class="form-control" id="searchField1">
+											<option selected="selected">None</option>
+											<option value="courses_size">Section Size</option>
+											<option value="courses_dept">Department</option>
+											<option value="courses_id">Course Number</option>
+											<option value="courses_instructor">Instructor</option>
+											<option value="courses_title">Title</option>
+										</select>
+									</div>
+
+									<div class="col-xs-4">
+										<label for="searchValue1">Search value 2</label>
+										<input class="form-control" type="text" id="searchValue1">
+									</div>
+
+									<div class="col-xs-4 gutter">
+										<label for="searchBoolean1">Search logic 2</label>
+										<select class="form-control" id="searchBoolean1">
+											<option selected="selected" value="None">None</option>
+											<option value="AND">AND</option>
+											<option value="OR">OR</option>
+											<option value="NOT">NOT</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="2">
+								<div class="form-group">
+									<div class="col-xs-4">
+										<label for="searchField2">Search field 3</label>
+										<select class="form-control" id="searchField2">
+											<option selected="selected">None</option>
+											<option value="courses_size">Section Size</option>
+											<option value="courses_dept">Department</option>
+											<option value="courses_id">Course Number</option>
+											<option value="courses_instructor">Instructor</option>
+											<option value="courses_title">Title</option>
+										</select>
+									</div>
+
+									<div class="col-xs-4">
+										<label for="searchValue2">Search value 3</label>
+										<input class="form-control" type="text" id="searchValue2">
+									</div>
+
+									<div class="col-xs-4 gutter">
+										<label for="searchBoolean2">Search logic 3</label>
+										<select class="form-control" id="searchBoolean2">
+											<option selected="selected" value="None">None</option>
+											<option value="AND">AND</option>
+											<option value="OR">OR</option>
+											<option value="NOT">NOT</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="3">
+								<div class="form-group">
+									<div class="col-xs-4">
+										<label for="searchField3">Search field 4</label>
+										<select class="form-control" id="searchField3">
+											<option selected="selected">None</option>
+											<option value="courses_size">Section Size</option>
+											<option value="courses_dept">Department</option>
+											<option value="courses_id">Course Number</option>
+											<option value="courses_instructor">Instructor</option>
+											<option value="courses_title">Title</option>
+										</select>
+									</div>
+
+									<div class="col-xs-4">
+										<label for="searchValue3">Search value 4</label>
+										<input class="form-control" type="text" id="searchValue3">
+									</div>
+
+									<div class="col-xs-4 gutter">
+										<label for="searchBoolean3">Search logic 4</label>
+										<select class="form-control" id="searchBoolean3">
+											<option selected="selected" value="None">None</option>
+											<option value="AND">AND</option>
+											<option value="OR">OR</option>
+											<option value="NOT">NOT</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="4">
+								<div class="form-group">
+									<div class="col-xs-4">
+										<label for="searchField4">Search field 5</label>
+										<select class="form-control" id="searchField4">
+											<option selected="selected">None</option>
+											<option value="courses_size">Section Size</option>
+											<option value="courses_dept">Department</option>
+											<option value="courses_id">Course Number</option>
+											<option value="courses_instructor">Instructor</option>
+											<option value="courses_title">Title</option>
+										</select>
+									</div>
+
+									<div class="col-xs-4">
+										<label for="searchValue4">Search value 5</label>
+										<input class="form-control" type="text" id="searchValue4">
+									</div>
+								</div>
+							</li>
+						</ul>
+					</fieldset>
+				</div>
+			</div>
+
+			<div class="container">
+				<h2>Get Information</h2>
+				<div class="form-group">
+					<div class="col-xs-4">
+						<label for="orderCourses">Order</label><em> Order priority based on "Get field" order</em>
+						<select class="form-control" id="orderCourses">
+							<option selected="selected" value="none">No Display Order</option>
+							<option value="UP">UP</option>
+							<option value="DOWN">DOWN</option>
+						</select>
+					</div>
+					<fieldset class="getFields">
+						<ul class="list-unstyled">
+							<li index="0">
+								<div class="form-group">
+									<div class="col-xs-8">
+										<label for="getField0">Get field 1</label>
+										<select class="form-control" id="getField0">
+											<optgroup label="Basic">
+												<option value="null" selected="selected">None</option>
+												<option value="courses_size">Section Size</option>
+												<option value="courses_dept">Department</option>
+												<option value="courses_id">Course Number</option>
+												<option value="courses_instructor">Instructor</option>
+												<option value="courses_title">Title</option>
+											</optgroup>
+											<optgroup label="Advanced">
+												<option value="courseAvg">Courses Average</option>
+												<option value="numSections">Section offered</option>
+												<option value="maxPass">Most Passes</option>
+												<option value="maxFail">Most Fails</option>
+											</optgroup>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="1">
+								<div class="form-group">
+									<div class="col-xs-8">
+										<label for="getField1">Get field 2</label>
+										<select class="form-control" id="getField1">
+											<optgroup label="Basic">
+												<option value="null" selected="selected">None</option>
+												<option value="courses_size">Section Size</option>
+												<option value="courses_dept">Department</option>
+												<option value="courses_id">Course Number</option>
+												<option value="courses_instructor">Instructor</option>
+												<option value="courses_title">Title</option>
+											</optgroup>
+											<optgroup label="Advanced">
+												<option value="courseAvg">Courses Average</option>
+												<option value="numSections">Section offered</option>
+												<option value="maxPass">Most Passes</option>
+												<option value="maxFail">Most Fails</option>
+											</optgroup>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="2">
+								<div class="form-group">
+									<div class="col-xs-8">
+										<label for="getField2">Get field 3</label>
+										<select class="form-control" id="getField2">
+											<optgroup label="Basic">
+												<option value="null" selected="selected">None</option>
+												<option value="courses_size">Section Size</option>
+												<option value="courses_dept">Department</option>
+												<option value="courses_id">Course Number</option>
+												<option value="courses_instructor">Instructor</option>
+												<option value="courses_title">Title</option>
+											</optgroup>
+											<optgroup label="Advanced">
+												<option value="courseAvg">Courses Average</option>
+												<option value="numSections">Section offered</option>
+												<option value="maxPass">Most Passes</option>
+												<option value="maxFail">Most Fails</option>
+											</optgroup>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="3">
+								<div class="form-group">
+									<div class="col-xs-8">
+										<label for="getField3">Get field 4</label>
+										<select class="form-control" id="getField3">
+											<optgroup label="Basic">
+												<option value="null" selected="selected">None</option>
+												<option value="courses_size">Section Size</option>
+												<option value="courses_dept">Department</option>
+												<option value="courses_id">Course Number</option>
+												<option value="courses_instructor">Instructor</option>
+												<option value="courses_title">Title</option>
+											</optgroup>
+											<optgroup label="Advanced">
+												<option value="courseAvg">Courses Average</option>
+												<option value="numSections">Section offered</option>
+												<option value="maxPass">Most Passes</option>
+												<option value="maxFail">Most Fails</option>
+											</optgroup>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="4">
+								<div class="form-group">
+									<div class="col-xs-8">
+										<label for="getField4">Get field 5</label>
+										<select class="form-control" id="getField4">
+											<optgroup label="Basic">
+												<option value="null" selected="selected">None</option>
+												<option value="courses_size">Section Size</option>
+												<option value="courses_dept">Department</option>
+												<option value="courses_id">Course Number</option>
+												<option value="courses_instructor">Instructor</option>
+												<option value="courses_title">Title</option>
+											</optgroup>
+											<optgroup label="Advanced">
+												<option value="courseAvg">Courses Average</option>
+												<option value="numSections">Section offered</option>
+												<option value="maxPass">Most Passes</option>
+												<option value="maxFail">Most Fails</option>
+											</optgroup>
+										</select>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</fieldset>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="captionCourses">Add caption (*optional)</label>
+				<input class="form-control" type="text" id="captionCourses">
+			</div>
+			<button type="submit" class="btn btn-primary" id="submitCourses">Submit</button>
+
+		</form>
+
+		<div id="render">
+			<div class="modal fade" id="errorModal" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title"></h4>
+						</div>
+						<div class="modal-body">
+							<p></p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="container" id="rooms">
+	<div class="jumbotron">
+
+		<form id="queryRooms">
+
+			<div class="container">
+				<h2>Find Rooms</h2>
+				<em>If "Location" is selected, use format e.g. >0.5-DMP </em>
+				<div class="form-group">
+					<fieldset class="searchFields">
+						<ul class="list-unstyled">
+							<li index="0">
+								<div class="form-group">
+									<div class="col-xs-4">
+										<label for="searchRoom0">Search field 1</label>
+										<select class="form-control" id="searchRoom0">
+											<option selected="selected">None</option>
+											<option value="rooms_shortname">Building Shortname</option>
+											<option value="rooms_number">Room Number</option>
+											<option value="rooms_seats">Room Capacity</option>
+											<option value="rooms_type">Rooms Type</option>
+											<option value="rooms_furniture">Rooms Furniture</option>
+											<option value="location">Location</option>
+										</select>
+									</div>
+
+									<div class="col-xs-4">
+										<label for="searchRoomValue0">Search value 1</label>
+										<input class="form-control" type="text" id="searchRoomValue0">
+									</div>
+
+									<div class="col-xs-4 gutter">
+										<label for="searchRoomLogic0">Search Logic 1</label>
+										<select class="form-control" id="searchRoomLogic0">
+											<option selected="selected" value="None">None</option>
+											<option value="AND">AND</option>
+											<option value="OR">OR</option>
+											<option value="NOT">NOT</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="1">
+								<div class="form-group">
+									<div class="col-xs-4">
+										<label for="searchRoom1">Search field 2</label>
+										<select class="form-control" id="searchRoom1">
+											<option selected="selected">None</option>
+											<option value="rooms_shortname">Building Shortname</option>
+											<option value="rooms_number">Room Number</option>
+											<option value="rooms_seats">Room Capacity</option>
+											<option value="rooms_type">Rooms Type</option>
+											<option value="rooms_furniture">Rooms Furniture</option>
+											<option value="location">Location</option>
+										</select>
+									</div>
+
+									<div class="col-xs-4">
+										<label for="searchRoomValue1">Search value 2</label>
+										<input class="form-control" type="text" id="searchRoomValue1">
+									</div>
+
+									<div class="col-xs-4 gutter">
+										<label for="searchRoomLogic1">Search Logic 2</label>
+										<select class="form-control" id="searchRoomLogic1">
+											<option selected="selected" value="None">None</option>
+											<option value="AND">AND</option>
+											<option value="OR">OR</option>
+											<option value="NOT">NOT</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="2">
+								<div class="form-group">
+									<div class="col-xs-4">
+										<label for="searchRoom2">Search field 3</label>
+										<select class="form-control" id="searchRoom2">
+											<option selected="selected">None</option>
+											<option value="rooms_shortname">Building Shortname</option>
+											<option value="rooms_number">Room Number</option>
+											<option value="rooms_seats">Room Capacity</option>
+											<option value="rooms_type">Rooms Type</option>
+											<option value="rooms_furniture">Rooms Furniture</option>
+											<option value="location">Location</option>
+										</select>
+									</div>
+
+									<div class="col-xs-4">
+										<label for="searchRoomValue2">Search value 3</label>
+										<input class="form-control" type="text" id="searchRoomValue2">
+									</div>
+
+									<div class="col-xs-4 gutter">
+										<label for="searchRoomLogic2">Search Logic 3</label>
+										<select class="form-control" id="searchRoomLogic2">
+											<option selected="selected" value="None">None</option>
+											<option value="AND">AND</option>
+											<option value="OR">OR</option>
+											<option value="NOT">NOT</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="3">
+								<div class="form-group">
+									<div class="col-xs-4">
+										<label for="searchRoom3">Search field 4</label>
+										<select class="form-control" id="searchRoom3">
+											<option selected="selected">None</option>
+											<option value="rooms_shortname">Building Shortname</option>
+											<option value="rooms_number">Room Number</option>
+											<option value="rooms_seats">Room Capacity</option>
+											<option value="rooms_type">Rooms Type</option>
+											<option value="rooms_furniture">Rooms Furniture</option>
+											<option value="location">Location</option>
+										</select>
+									</div>
+
+									<div class="col-xs-4">
+										<label for="searchRoomValue3">Search value 4</label>
+										<input class="form-control" type="text" id="searchRoomValue3">
+									</div>
+
+									<div class="col-xs-4 gutter">
+										<label for="searchRoomLogic3">Search Logic 4</label>
+										<select class="form-control" id="searchRoomLogic3">
+											<option selected="selected" value="None">None</option>
+											<option value="AND">AND</option>
+											<option value="OR">OR</option>
+											<option value="NOT">NOT</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="4">
+								<div class="form-group">
+									<div class="col-xs-4">
+										<label for="searchRoom4">Search field 5</label>
+										<select class="form-control" id="searchRoom4">
+											<option selected="selected">None</option>
+											<option value="rooms_shortname">Building Shortname</option>
+											<option value="rooms_number">Room Number</option>
+											<option value="rooms_seats">Room Capacity</option>
+											<option value="rooms_type">Rooms Type</option>
+											<option value="rooms_furniture">Rooms Furniture</option>
+											<option value="location">Location</option>
+										</select>
+									</div>
+
+									<div class="col-xs-4">
+										<label for="searchRoomValue4">Search value 5</label>
+										<input class="form-control" type="text" id="searchRoomValue4">
+									</div>
+								</div>
+							</li>
+						</ul>
+					</fieldset>
+				</div>
+			</div>
+
+			<div class="container">
+				<h2>Get Information</h2>
+				<div class="form-group">
+					<div class="col-xs-4">
+						<label for="orderRooms">Order</label><em> Order priority based on "Get field" order</em>
+						<select class="form-control" id="orderRooms">
+							<option selected="selected" value="none">No Display Order</option>
+							<option value="UP">UP</option>
+							<option value="DOWN">DOWN</option>
+						</select>
+					</div>
+					<fieldset class="getFields">
+						<ul class="list-unstyled">
+							<li index="0">
+								<div class="form-group">
+									<div class="col-xs-8">
+										<label for="getRooms0">Get field 1</label>
+										<select class="form-control" id="getRooms0">
+											<option selected="selected" value="null">None</option>
+											<option value="rooms_fullname">Building Fullname</option>
+											<option value="rooms_shortname">Building Shortname</option>
+											<option value="rooms_name">Room Name</option>
+											<option value="rooms_seats">Room Capacity</option>
+											<option value="rooms_type">Rooms Type</option>
+											<option value="rooms_furniture">Rooms Furniture</option>
+											<option value="rooms_address">Building Address</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="1">
+								<div class="form-group">
+									<div class="col-xs-8">
+										<label for="getRooms1">Get field 2</label>
+										<select class="form-control" id="getRooms1">
+											<option selected="selected" value="null">None</option>
+											<option value="rooms_fullname">Building Fullname</option>
+											<option value="rooms_shortname">Building Shortname</option>
+											<option value="rooms_name">Room Name</option>
+											<option value="rooms_seats">Room Capacity</option>
+											<option value="rooms_type">Rooms Type</option>
+											<option value="rooms_furniture">Rooms Furniture</option>
+											<option value="rooms_address">Building Address</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="2">
+								<div class="form-group">
+									<div class="col-xs-8">
+										<label for="getRooms2">Get field 3</label>
+										<select class="form-control" id="getRooms2">
+											<option selected="selected" value="null">None</option>
+											<option value="rooms_fullname">Building Fullname</option>
+											<option value="rooms_shortname">Building Shortname</option>
+											<option value="rooms_name">Room Name</option>
+											<option value="rooms_seats">Room Capacity</option>
+											<option value="rooms_type">Rooms Type</option>
+											<option value="rooms_furniture">Rooms Furniture</option>
+											<option value="rooms_address">Building Address</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li index="3">
+								<div class="form-group">
+									<div class="col-xs-8">
+									<label for="getRooms3">Get field 4</label>
+									<select class="form-control" id="getRooms3">
+										<option selected="selected" value="null">None</option>
+										<option value="rooms_fullname">Building Fullname</option>
+										<option value="rooms_shortname">Building Shortname</option>
+										<option value="rooms_name">Room Name</option>
+										<option value="rooms_seats">Room Capacity</option>
+										<option value="rooms_type">Rooms Type</option>
+										<option value="rooms_furniture">Rooms Furniture</option>
+										<option value="rooms_address">Building Address</option>
+									</select>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</fieldset>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="captionRooms">Add caption (*optional)</label>
+				<input class="form-control" type="text" id="captionRooms">
+			</div>
+			<button type="submit" class="btn btn-primary" id="submitRooms">Submit</button>
+
+		</form>
+
+		<div id="renderRooms">
+			<div class="modal fade" id="errorModal2" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title"></h4>
+						</div>
+						<div class="modal-body">
+							<p></p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+</body>
+</html>

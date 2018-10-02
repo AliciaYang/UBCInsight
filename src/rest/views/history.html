@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Scheduling</title>
+    <link rel="stylesheet" href="./public/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/main.css">
+    <script src="./public/jquery.min.js"></script>
+    <script src="./public/bootstrap.min.js"></script>
+    <script src="./public/d3.min.js"></script>
+    <script src="./public/main.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">InsightUBC</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="index.html#addData">Add Data</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html#courses">courses</a></li>
+                        <li><a href="index.html#rooms">rooms</a></li>
+                    </ul>
+                </li>
+                <li><a href="RoomScheduler.html">Room Scheduler</a></li>
+                <li><a href="history.html">Recent Queries</a></li>
+            </ul>
+
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="container">
+    <div class="jumbotron">
+     <div class="connecting-line"></div>
+
+        <h2>Recent Queries</h2>
+        <div class="clearfix"></div>
+
+        <div class="tab-pane active" role="tabpanel" id="history">
+            <div class="form-group">
+                <h4>Queries from</h4>
+                <div class="form-group col-xs-4">
+                    <!--col-lg-6-->
+                    <select class="form-control" id="historyId">
+                        <option selected="selected">Choose ID</option>
+                        <option value="courses">courses</option>
+                        <option value="rooms">rooms</option>
+                    </select>
+                </div>
+                <ul class="list-inline pull-middle">
+                    <li><button type="button" class="btn btn-primary get-history" id="getHistory">Get History</button></li>
+                </ul>
+                <div class="clearfix"></div>
+                <!--<div class="container form-group myBox myBoxColor" style="white-space: pre-line;" id="historyTable"></div>-->
+                <div class="container form-group historyBox myBoxColor" style="white-space: pre-line;" align="center" id="historyTable"></div>
+                <!--<div class="container form-group runAgainBox myBoxColor" style="white-space: pre-line;" id="runAgainBox"></div>-->
+                <div id="wrapper">
+                    <div id="container">
+                        <h3>Query</h3>
+                        <form id="queryForm">
+                            <div class="form-group">
+                                <label for="query">Query:</label>
+                                <textarea class="form-control" rows="10" id="query"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary run-again">Run It Again!</button>
+                        </form>
+                    </div>
+                    <div id="render-history">
+                        <h3>Result</h3>
+                    </div>
+                    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title"></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+        </div>
+
+
+    </div>
+</div>
+</div>
+</body>
+</html>

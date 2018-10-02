@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/53c667d1a58aa252e758b16f5c3e327fa8e119db/restify/restify.d.ts",
+    "raw": "registry:dt/restify#2.0.0+20160602145247",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/53c667d1a58aa252e758b16f5c3e327fa8e119db/restify/restify.d.ts"
+  }
+}

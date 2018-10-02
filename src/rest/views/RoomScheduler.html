@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Scheduling</title>
+    <link rel="stylesheet" href="./public/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/main.css">
+    <script src="./public/jquery.min.js"></script>
+    <script src="./public/bootstrap.min.js"></script>
+    <script src="./public/d3.min.js"></script>
+    <script src="./public/main.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">InsightUBC</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="index.html#addData">Add Data</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html#courses">courses</a></li>
+                        <li><a href="index.html#rooms">rooms</a></li>
+                    </ul>
+                </li>
+                <li><a href="RoomScheduler.html">Room Scheduler</a></li>
+                <li><a href="history.html">Recent Queries</a></li>
+            </ul>
+
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jumbotron">
+        <section>
+
+            <div class="wizard">
+                <div class="wizard-inner">
+                    <div class="connecting-line"></div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <h2>Room Scheduler</h2>
+                        <li role="presentation" class="active">
+                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                            <span class="round-tab">
+                                <label>Get Courses</label>
+                            </span>
+                            </a>
+                        </li>
+
+                        <li role="presentation" class="disabled">
+                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                            <span class="round-tab">
+                                <label>Get Rooms</label>
+                            </span>
+                            </a>
+                        </li>
+                        <!--<li role="presentation" class="disabled">-->
+                            <!--<a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">-->
+                            <!--<span class="round-tab">-->
+                                <!--<label>Room Scheduling</label>-->
+                            <!--</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+
+                        <li role="presentation" class="disabled">
+                            <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                            <span class="round-tab">
+                                <label>Complete</label>
+                            </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <form role="form">
+                    <div class="tab-content">
+                        <div class="tab-pane active" role="tabpanel" id="step1">
+                            <h3>Filter Courses</h3>
+                            <p>
+                            <ul class="list-unstyled">
+                            <li index="0">
+                                <div class="form-group">
+                                    <div class="col-xs-8">
+                                        <label for="department">Department</label>
+                                        <input class="form-control" type="text" id="department"/>
+                                        <em>tpye "ALL" in Department for all courses</em></br>
+                                        <em>use ";" if more than one</em>
+                                    </div>
+                                </div>
+                            </li>
+                            <li index="1">
+                                <div class="form-group">
+                                    <div class="col-xs-8">
+
+                                        <label for="courseNumber">Course Number</label>
+                                        <input class="form-control" type="text" id="courseNumber"/>
+                                        <em>use ";" if more than one</em>
+                                    </div>
+                                </div>
+                            </li>
+
+                            </ul>
+                            </p>
+
+                            <ul class="list-inline pull-right form-group" id="test">
+                            <button type="button" class="btn btn-primary filter-courses" step="step1">Save and continue</button></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="tab-pane" role="tabpanel" id="step2">
+                            <h3>Filter Rooms</h3>
+                            <p>
+                            <ul class="list-unstyled">
+                                <li index="0">
+                                    <div class="form-group">
+                                        <div class="col-xs-8">
+                                            <label for="buildingName">Building Name</label>
+                                            <input class="form-control" type="text" id="buildingName"/>
+                                            <em>tpye "ALL" in Building Name for all rooms</em></br>
+                                            <em>use ";" if more than one</em>
+                                        </div>
+                                    </div>
+                                </li>
+                            <li index="1">
+                                <div class="form-group">
+                                    <div class="col-xs-8">
+                                        <label for="distance">Distance</label><em> (km)</em>
+                                        <input class="form-control" type="text" id="distance"/>
+                                        <em>use ";" if more than one</em></br>
+                                        <em>use format e.g. >0.5-DMP </em>
+                                    </div>
+
+                                </div>
+                            </li>
+                            </ul>
+                            </p>
+
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                <li><button type="button" class="btn btn-primary filter-rooms" step="step2">Save and continue</button></li>
+                            </ul>
+
+
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="complete">
+                            <div class="clearfix"></div>
+                            <div class="form-group">
+                                <ul class="list-inline pull-middle">
+                                    <li><button type="submit" class="btn btn-primary scheduling">Get Schedule</button></li>
+                                    <li><button type="submit" class="btn btn-primary unscheduling">Get Unscheduled Courses</button></li>
+                                    <li><button type="submit" class="btn btn-primary quality">Get Quality Table</button></li>
+                                </ul>
+                                <div class="container form-group myBox myBoxColor" id="schedule"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+
+</body>
+</html>

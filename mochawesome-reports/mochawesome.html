@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mochawesome Report Card</title>
+    
+    <link rel="stylesheet" href="css/mochawesome.css">
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="report-info-cnt">
+          <h1 class="report-title">cpsc310project</h1>
+          <h3 class="report-date">Thursday, November 3 2016, 11:36am</h3>
+        </div>
+        <div class="nav-right">
+          <div class="quick-summary-cnt">
+              <ul class="list-unstyled quick-summary">
+                <li class="qs-item summary-duration" title="Duration">2.57<span>S</span></li>
+                <li class="qs-item summary-suites" title="Suites">1</li>
+                <li class="qs-item summary-tests" title="Tests">16</li>
+                <li class="qs-item summary-passes" title="Passed" data-filter="passed">0</li>
+                <li class="qs-item summary-failures" title="Failed" data-filter="failed">1</li>
+                <li class="qs-item summary-pending" title="Pending" data-filter="pending">0</li>
+              </ul>          </div>
+          <button class="nav-menu-btn open-menu"><i class="icon-menu"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Report Summary -->
+    <div class="summary">
+      <div class="container">
+          <div class="row">
+            <div class="summary-col summary-duration">
+              <h1 class="summary-count">2.57<span>S</span></h1>
+              <h4 class="summary-label">S</h4>
+            </div>
+            <div class="summary-col summary-suites" title="Suites">
+              <h1 class="summary-count">1</h1>
+              <h4 class="summary-label">Suite</h4>
+            </div>
+            <div class="summary-col summary-tests" title="Tests">
+              <h1 class="summary-count">16</h1>
+              <h4 class="summary-label">Tests</h4>
+            </div>
+            <div class="summary-col summary-passes" data-filter="passed" title="Passed">
+              <h1 class="summary-count">0</h1>
+              <h4 class="summary-label">Passed</h4>
+            </div>
+            <div class="summary-col summary-failures" data-filter="failed" title="Failed">
+              <h1 class="summary-count">1</h1>
+              <h4 class="summary-label">Failed</h4>
+            </div>
+            <div class="summary-col summary-pending" data-filter="pending" title="Pending">
+              <h1 class="summary-count">0</h1>
+              <h4 class="summary-label">Pending</h4>
+            </div>
+          </div>      </div>
+    </div>
+    <div class="statusbar has-skipped-tests">
+      <div class="container">
+          <div class="row">
+            <div class="status-item status-item-skipped danger">15 Skipped Tests</div>
+            <div class="status-item status-item-pending-pct">0% Pending</div>
+            <div class="status-item status-item-passing-pct danger">0% Passing</div>
+          </div>      </div>
+    </div>
+
+    <!-- Suites -->
+    <div class="details container">
+            <section class="suite-wrap">
+          <div id="40ac9ebe-6a46-42df-87b4-98759831eb37" class="suite has-tests has-failed has-skipped">
+            <h3 class="suite-title">InsightFacade</h3>
+            <h5 class="suite-filename">/test/InsightFacadeSpec.js</h5>
+            <!-- Suite Chart -->
+            <div class="suite-chart-wrap">
+              <canvas id="40ac9ebe-6a46-42df-87b4-98759831eb37" class="suite-chart" width="50" height="50" data-total-passes="0" data-total-failures="1" data-total-pending="0" data-total-skipped="15"></canvas>
+            </div>
+            <div class="suite-data-wrap">
+              <!-- Suite Summary -->
+              <ul class="suite-summary list-unstyled">
+                <li class="suite-summary-item duration">2.14 s</li>
+                <li class="suite-summary-item tests">16</li>
+                <li class="suite-summary-item passed">0</li>
+                <li class="suite-summary-item failed">1</li>
+                <li class="suite-summary-item pending">0</li>
+              </ul>
+              <!-- Test Info -->
+              <div class="suite-test-wrap">
+                <div class="suite-test-header" data-toggle="collapse" data-target="#40ac9ebe-6a46-42df-87b4-98759831eb37-test-list">
+                  <h4 class="suite-test-header-title">Tests</h4>
+                </div>
+                <div id="40ac9ebe-6a46-42df-87b4-98759831eb37-test-list" class="list-group test-list collapse in">
+                    <div id="1f85ba03-a506-4619-a252-a7b90640d894" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              Should be able to add a new dataset (204)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#1f85ba03-a506-4619-a252-a7b90640d894 > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.addDataset(<span class="hljs-string">'courses'</span>, zipFileContents).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">204</span>);<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail(<span class="hljs-string">'Should not happen'</span>);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="5bbe7b43-33dd-4613-be02-46c7f4069f19" class="list-group-item test failed">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              Should be able to add a new dataset (204) rooms
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#5bbe7b43-33dd-4613-be02-46c7f4069f19 > .test-code.collapse">Code</button>
+              <span class="test-duration ">2.14 s</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+            <p class="test-error-message">Error: timeout of 2000ms exceeded. Ensure the done() callback is being called in this test.
+              <button class="btn btn-link btn-sm toggle-btn toggle-stack collapsed" data-toggle="collapse" data-target="#5bbe7b43-33dd-4613-be02-46c7f4069f19 > .test-error-stack.collapse">Stack</button>
+            </p>
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.addDataset(<span class="hljs-string">'rooms'</span>, zipFileRooms).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">204</span>);<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail(<span class="hljs-string">'Should not happen'</span>);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+          <div class="test-error-stack collapse">
+            <pre><code class="hljs small"><span class="hljs-built_in">Error</span>: timeout <span class="hljs-keyword">of</span> <span class="hljs-number">2000</span>ms exceeded. Ensure the done() callback is being called <span class="hljs-keyword">in</span> <span class="hljs-keyword">this</span> test.</code></pre>
+          </div>
+        </div>            <div id="485979bd-a4ad-4ec8-b6ca-07a5d4f49a11" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              Should be able to update an existing dataset (201)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#485979bd-a4ad-4ec8-b6ca-07a5d4f49a11 > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.addDataset(<span class="hljs-string">'courses'</span>, zipFileContents).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">201</span>);<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail(<span class="hljs-string">'Should not happen'</span>);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="2f504e6e-ea4b-4de7-a089-f242b9fdbdf2" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              Should not be able to add an invalid dataset (400)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#2f504e6e-ea4b-4de7-a089-f242b9fdbdf2 > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.addDataset(<span class="hljs-string">'courses'</span>, <span class="hljs-string">'some random bytes'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail();<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">400</span>);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="aecf91db-8e4a-410e-a6c0-3045246809ae" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              Should be able to perform query (200)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#aecf91db-8e4a-410e-a6c0-3045246809ae > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br><span class="hljs-keyword">var</span> query = {<br>    <span class="hljs-string">"GET"</span>: [<span class="hljs-string">"courses_id"</span>, <span class="hljs-string">"courseAverage"</span>],<br>    <span class="hljs-string">"WHERE"</span>: { <span class="hljs-string">"IS"</span>: { <span class="hljs-string">"courses_dept"</span>: <span class="hljs-string">"cpsc"</span> } },<br>    <span class="hljs-string">"GROUP"</span>: [<span class="hljs-string">"courses_id"</span>],<br>    <span class="hljs-string">"APPLY"</span>: [{ <span class="hljs-string">"courseAverage"</span>: { <span class="hljs-string">"AVG"</span>: <span class="hljs-string">"courses_avg"</span> } }],<br>    <span class="hljs-string">"ORDER"</span>: { <span class="hljs-string">"dir"</span>: <span class="hljs-string">"UP"</span>, <span class="hljs-string">"keys"</span>: [<span class="hljs-string">"courseAverage"</span>, <span class="hljs-string">"courses_id"</span>] },<br>    <span class="hljs-string">"AS"</span>: <span class="hljs-string">"TABLE"</span><br>};<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.performQuery(query).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">200</span>);<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail(<span class="hljs-string">'Should not happen'</span>);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="6f00ab96-b2bd-4054-bc38-e79c9302ae2f" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              WHERE has courses1_dept:Should not be able to perform query (424)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#6f00ab96-b2bd-4054-bc38-e79c9302ae2f > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br><span class="hljs-keyword">var</span> query = {<br>    <span class="hljs-string">"GET"</span>: [<span class="hljs-string">"courses_id"</span>, <span class="hljs-string">"courseAverage"</span>],<br>    <span class="hljs-string">"WHERE"</span>: { <span class="hljs-string">"IS"</span>: { <span class="hljs-string">"courses1_dept"</span>: <span class="hljs-string">"cpsc"</span> } },<br>    <span class="hljs-string">"GROUP"</span>: [<span class="hljs-string">"courses_id"</span>],<br>    <span class="hljs-string">"APPLY"</span>: [{ <span class="hljs-string">"courseAverage"</span>: { <span class="hljs-string">"AVG"</span>: <span class="hljs-string">"courses_avg"</span> } }],<br>    <span class="hljs-string">"ORDER"</span>: { <span class="hljs-string">"dir"</span>: <span class="hljs-string">"UP"</span>, <span class="hljs-string">"keys"</span>: [<span class="hljs-string">"courseAverage"</span>, <span class="hljs-string">"courses_id"</span>] },<br>    <span class="hljs-string">"AS"</span>: <span class="hljs-string">"TABLE"</span><br>};<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.performQuery(query).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail();<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">424</span>);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="d4ace1a0-86a9-4b2f-a6d0-aa20d7475f23" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              GET has courses1_id:Should not be able to perform query (424)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#d4ace1a0-86a9-4b2f-a6d0-aa20d7475f23 > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br><span class="hljs-keyword">var</span> query = {<br>    <span class="hljs-string">"GET"</span>: [<span class="hljs-string">"courses1_id"</span>, <span class="hljs-string">"courseAverage"</span>],<br>    <span class="hljs-string">"WHERE"</span>: { <span class="hljs-string">"IS"</span>: { <span class="hljs-string">"courses_dept"</span>: <span class="hljs-string">"cpsc"</span> } },<br>    <span class="hljs-string">"GROUP"</span>: [<span class="hljs-string">"courses1_id"</span>],<br>    <span class="hljs-string">"APPLY"</span>: [{ <span class="hljs-string">"courseAverage"</span>: { <span class="hljs-string">"AVG"</span>: <span class="hljs-string">"courses_avg"</span> } }],<br>    <span class="hljs-string">"ORDER"</span>: { <span class="hljs-string">"dir"</span>: <span class="hljs-string">"UP"</span>, <span class="hljs-string">"keys"</span>: [<span class="hljs-string">"courseAverage"</span>, <span class="hljs-string">"courses1_id"</span>] },<br>    <span class="hljs-string">"AS"</span>: <span class="hljs-string">"TABLE"</span><br>};<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.performQuery(query).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail();<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">424</span>);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="b77476fb-cc04-4bf3-b615-d7a1493509c3" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              GROUP has courses1_id:Should not be able to perform query (424)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#b77476fb-cc04-4bf3-b615-d7a1493509c3 > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br><span class="hljs-keyword">var</span> query = {<br>    <span class="hljs-string">"GET"</span>: [<span class="hljs-string">"courses_id"</span>, <span class="hljs-string">"courseAverage"</span>],<br>    <span class="hljs-string">"WHERE"</span>: { <span class="hljs-string">"IS"</span>: { <span class="hljs-string">"courses_dept"</span>: <span class="hljs-string">"cpsc"</span> } },<br>    <span class="hljs-string">"GROUP"</span>: [<span class="hljs-string">"courses1_id"</span>],<br>    <span class="hljs-string">"APPLY"</span>: [{ <span class="hljs-string">"courseAverage"</span>: { <span class="hljs-string">"AVG"</span>: <span class="hljs-string">"courses_avg"</span> } }],<br>    <span class="hljs-string">"ORDER"</span>: { <span class="hljs-string">"dir"</span>: <span class="hljs-string">"UP"</span>, <span class="hljs-string">"keys"</span>: [<span class="hljs-string">"courseAverage"</span>, <span class="hljs-string">"courses_id"</span>] },<br>    <span class="hljs-string">"AS"</span>: <span class="hljs-string">"TABLE"</span><br>};<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.performQuery(query).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail();<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">400</span>);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="2054ffd7-aca8-4bc9-b078-387c968f1c88" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              APPLY has courses1_avg:Should not be able to perform query (424)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#2054ffd7-aca8-4bc9-b078-387c968f1c88 > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br><span class="hljs-keyword">var</span> query = {<br>    <span class="hljs-string">"GET"</span>: [<span class="hljs-string">"courses_id"</span>, <span class="hljs-string">"courseAverage"</span>],<br>    <span class="hljs-string">"WHERE"</span>: { <span class="hljs-string">"IS"</span>: { <span class="hljs-string">"courses_dept"</span>: <span class="hljs-string">"cpsc"</span> } },<br>    <span class="hljs-string">"GROUP"</span>: [<span class="hljs-string">"courses_id"</span>],<br>    <span class="hljs-string">"APPLY"</span>: [{ <span class="hljs-string">"courseAverage"</span>: { <span class="hljs-string">"AVG"</span>: <span class="hljs-string">"courses1_avg"</span> } }],<br>    <span class="hljs-string">"ORDER"</span>: { <span class="hljs-string">"dir"</span>: <span class="hljs-string">"UP"</span>, <span class="hljs-string">"keys"</span>: [<span class="hljs-string">"courseAverage"</span>, <span class="hljs-string">"courses_id"</span>] },<br>    <span class="hljs-string">"AS"</span>: <span class="hljs-string">"TABLE"</span><br>};<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.performQuery(query).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail();<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">424</span>);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="fe56ed98-8201-47f1-a313-284fd4c7f1f2" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              ORDER has courses1_id:Should not be able to perform query (424)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#fe56ed98-8201-47f1-a313-284fd4c7f1f2 > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br><span class="hljs-keyword">var</span> query = {<br>    <span class="hljs-string">"GET"</span>: [<span class="hljs-string">"courses_id"</span>, <span class="hljs-string">"courseAverage"</span>],<br>    <span class="hljs-string">"WHERE"</span>: { <span class="hljs-string">"IS"</span>: { <span class="hljs-string">"courses_dept"</span>: <span class="hljs-string">"cpsc"</span> } },<br>    <span class="hljs-string">"GROUP"</span>: [<span class="hljs-string">"courses_id"</span>],<br>    <span class="hljs-string">"APPLY"</span>: [{ <span class="hljs-string">"courseAverage"</span>: { <span class="hljs-string">"AVG"</span>: <span class="hljs-string">"courses_avg"</span> } }],<br>    <span class="hljs-string">"ORDER"</span>: { <span class="hljs-string">"dir"</span>: <span class="hljs-string">"UP"</span>, <span class="hljs-string">"keys"</span>: [<span class="hljs-string">"courseAverage"</span>, <span class="hljs-string">"courses1_id"</span>] },<br>    <span class="hljs-string">"AS"</span>: <span class="hljs-string">"TABLE"</span><br>};<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.performQuery(query).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail();<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">424</span>);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="ac42c041-ad9c-4fae-99a5-7fbb7642f4e6" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              everywhere has courses1:Should not be able to perform query (424)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#ac42c041-ad9c-4fae-99a5-7fbb7642f4e6 > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br><span class="hljs-keyword">var</span> query = {<br>    <span class="hljs-string">"GET"</span>: [<span class="hljs-string">"courses1_id"</span>, <span class="hljs-string">"courseAverage"</span>],<br>    <span class="hljs-string">"WHERE"</span>: { <span class="hljs-string">"IS"</span>: { <span class="hljs-string">"courses1_dept"</span>: <span class="hljs-string">"cpsc"</span> } },<br>    <span class="hljs-string">"GROUP"</span>: [<span class="hljs-string">"courses1_id"</span>],<br>    <span class="hljs-string">"APPLY"</span>: [{ <span class="hljs-string">"courseAverage"</span>: { <span class="hljs-string">"AVG"</span>: <span class="hljs-string">"courses1_avg"</span> } }],<br>    <span class="hljs-string">"ORDER"</span>: { <span class="hljs-string">"dir"</span>: <span class="hljs-string">"UP"</span>, <span class="hljs-string">"keys"</span>: [<span class="hljs-string">"courseAverage"</span>, <span class="hljs-string">"courses1_id"</span>] },<br>    <span class="hljs-string">"AS"</span>: <span class="hljs-string">"TABLE"</span><br>};<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.performQuery(query).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail();<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">424</span>);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="76086cd2-577b-420d-9202-1b9e5a223512" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              Invalid GET and APPLY don&#x27;t match :Should not be able to perform query (424)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#76086cd2-577b-420d-9202-1b9e5a223512 > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br><span class="hljs-keyword">var</span> query = {<br>    <span class="hljs-string">"GET"</span>: [<span class="hljs-string">"courses_id"</span>, <span class="hljs-string">"courseaAverage"</span>],<br>    <span class="hljs-string">"WHERE"</span>: { <span class="hljs-string">"IS"</span>: { <span class="hljs-string">"courses_dept"</span>: <span class="hljs-string">"cpsc"</span> } },<br>    <span class="hljs-string">"GROUP"</span>: [<span class="hljs-string">"courses_id"</span>],<br>    <span class="hljs-string">"APPLY"</span>: [{ <span class="hljs-string">"courseAverage"</span>: { <span class="hljs-string">"AVG"</span>: <span class="hljs-string">"courses_avg"</span> } }],<br>    <span class="hljs-string">"ORDER"</span>: { <span class="hljs-string">"dir"</span>: <span class="hljs-string">"UP"</span>, <span class="hljs-string">"keys"</span>: [<span class="hljs-string">"courseAverage"</span>, <span class="hljs-string">"courses_id"</span>] },<br>    <span class="hljs-string">"AS"</span>: <span class="hljs-string">"TABLE"</span><br>};<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.performQuery(query).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail();<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">400</span>);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="a16264b6-0640-4633-bb80-203dc11b2898" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              courses_pass normal:Should be able to perform query (200)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#a16264b6-0640-4633-bb80-203dc11b2898 > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br><span class="hljs-keyword">var</span> query = {<br>    <span class="hljs-string">"GET"</span>: [<span class="hljs-string">"courses_title"</span>],<br>    <span class="hljs-string">"WHERE"</span>: {<br>        <span class="hljs-string">"IS"</span>: { <span class="hljs-string">"courses_pass"</span>: <span class="hljs-number">23</span> },<br>    },<br>    <span class="hljs-string">"AS"</span>: <span class="hljs-string">"TABLE"</span><br>};<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.performQuery(query).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">200</span>);<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail(response.body);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="488b27f5-8d1a-4a25-9a88-f86693e57014" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              NOT :Should be able to perform query (200)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#488b27f5-8d1a-4a25-9a88-f86693e57014 > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br><span class="hljs-keyword">var</span> query = {<br>    <span class="hljs-string">"GET"</span>: [<span class="hljs-string">"courses_dept"</span>, <span class="hljs-string">"courses_id"</span>, <span class="hljs-string">"courses_avg"</span>],<br>    <span class="hljs-string">"WHERE"</span>: {<br>        <span class="hljs-string">"NOT"</span>: {<br>            <span class="hljs-string">"NOT"</span>: { <span class="hljs-string">"IS"</span>: { <span class="hljs-string">"courses_dept"</span>: <span class="hljs-string">"adhe"</span> } }<br>        }<br>    },<br>    <span class="hljs-string">"ORDER"</span>: <span class="hljs-string">"courses_uuid"</span>,<br>    <span class="hljs-string">"AS"</span>: <span class="hljs-string">"TABLE"</span><br>};<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.performQuery(query).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">200</span>);<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail();<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="83e2b374-0b06-4dd5-8e73-c4028abea83b" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              Should be able to delete an existing dataset (204)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#83e2b374-0b06-4dd5-8e73-c4028abea83b > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.removeDataset(<span class="hljs-string">'courses'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">204</span>);<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect.fail(<span class="hljs-string">'Should not happen'</span>);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="ff74f9fb-b61b-4507-90be-a9197dcc5dbc" class="list-group-item test skipped">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              Should not be able to remove a dataset (404)
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#ff74f9fb-b61b-4507-90be-a9197dcc5dbc > .test-code.collapse">Code</button>
+              <span class="test-duration ">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> that = <span class="hljs-keyword">this</span>;<br>Util_1.default.trace(<span class="hljs-string">"Starting test: "</span> + that.test.title);<br><span class="hljs-keyword">return</span> facade.removeDataset(<span class="hljs-string">'courses'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    Util_1.default.trace(response.toString());<br>    chai_1.expect.fail();<br>}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{<br>    chai_1.expect(response.code).to.equal(<span class="hljs-number">404</span>);<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>        </div>
+              </div>
+            </div>
+        
+        
+          </div>
+        </section>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>Report generated by <a href="http://adamgruber.github.io/mochawesome/" target="_blank">mochawesome</a>.<br>Designed and built by <a href="https://github.com/adamgruber" target="_blank">adamgruber</a>. &copy;2016.</p>
+      </div>
+    </footer>
+
+    <!-- Nav Menu -->
+    <div class="nav-menu-wrap">
+      <div class="menu-overlay close-menu"></div>
+      <nav class="menu">
+        <button class="nav-menu-btn close-menu"><i class="icon-failed"></i></button>
+        <ul class="list-unstyled main-menu">
+                <li class="nav-menu-item">
+                <a href="#40ac9ebe-6a46-42df-87b4-98759831eb37" class="nav-menu-item-link has-failures">InsightFacade</a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/vendor.js"></script>
+    <script src="js/mochawesome.js"></script>
+  </body>
+</html>
